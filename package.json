@@ -1,0 +1,17 @@
+{
+  "name": "film-repository",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "npm-run-all -p develop:*",
+    "develop:backend": "cd Back-End && yarn run develop",
+    "develop:frontend": "cd Front-End && npm run serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "npm-run-all": "^4.1.5"
+  },
+  "devDependencies": {}
+}

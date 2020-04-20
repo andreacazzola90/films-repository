@@ -1,0 +1,11 @@
+node_modules
+package-lock.json
+
+Back-End/node_modules
+Back-End/yarn.lock
+Back-End/config/*
+Back-End/config/
+
+
+Front-End/node_modules
+Front-End/package-lock.json
