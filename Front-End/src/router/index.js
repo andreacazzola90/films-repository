@@ -14,7 +14,10 @@ import RootCategory from '../components/category/RootCategory.vue'
 import NewCategory from '../components/category/NewCategory.vue'
 // import DetailCategory from '../components/category/DetailCategory.vue'
 
+import RootVideo from '../components/video/RootVideo.vue'
 import ListVideo from '../components/video/ListVideo.vue'
+import NewVideo from '../components/video/NewVideo.vue'
+import DetailVideo from '../components/video/DetailVideo.vue'
 
 import RootPost from '../components/post/RootPost.vue'
 import ListPost from '../components/post/ListPost.vue'
@@ -68,6 +71,17 @@ const routes = [
       { path: '', name: 'listVideo', component: ListVideo },
       { path: 'new', name: 'newCategory', component: NewCategory },
       { path: ':id', name: 'listVideo', component: ListVideo }
+    ]
+  },
+  {
+    path: '/video',
+    name: 'video',
+    component: RootVideo,
+    beforeEnter: protect,
+    children: [
+      { path: '', name: 'listVideo', component: ListVideo },
+      { path: 'new', name: 'newVideo', component: NewVideo },
+      { path: ':id', name: 'detailVideo', component: DetailVideo }
     ]
   },
   {

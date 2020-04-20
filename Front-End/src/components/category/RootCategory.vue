@@ -7,7 +7,7 @@
       <nav class="nav nav-pills nav-justified">
         <router-link :to="'/category/'" tag="a" class="nav-item nav-link" active-class="active" exact >All</router-link>
         <template v-for="(c, index) in getCategories" >
-          <router-link :to="'/category/' + c.key" tag="a" class="nav-item nav-link" active-class="active" exact :key="`menu_${index}`">{{c.name}}</router-link>
+          <router-link :to="'/category/' + c.name" tag="a" class="nav-item nav-link" active-class="active" exact :key="`menu_${index}`">{{c.name}}</router-link>
         </template>
       </nav>
     </template>

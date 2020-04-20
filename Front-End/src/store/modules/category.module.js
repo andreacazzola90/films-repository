@@ -1,7 +1,5 @@
 import Vue from 'vue'
-import { sleep } from '@/lib/util'
-
-import { catJson } from '@/jsonresponse'
+import axios from 'axios'
 
 const state = {
   categories: []
@@ -21,10 +19,14 @@ const getters = {
 const actions = {
 
   fetchCategories (context, payload) {
-    // axios get api
-    return sleep(1000).then(() => {
-      context.commit('setCategories', catJson)
-    })
+    axios.get('/categories')
+      .then(response => {
+        this.categories = response.data
+        context.commit('setCategories', response.data)
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
   }
 }
 const mutations = {

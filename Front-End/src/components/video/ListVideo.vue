@@ -14,14 +14,18 @@
                 <th scope="col">categoryId</th>
                 <th scope="col">body</th>
                 <th scope="col">userId</th>
+                <th scope="col">image</th>
+                <th scope="col">link</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="v in getFilteredVideos(this.$route.params.id)" :key="v.id">
                 <td>{{v.id}}</td>
-                <td>{{v.category}}</td>
+                <td>{{v.category.name}}</td>
                 <td>{{v.name}}</td>
-                <td>{{v.description}}</td>
+                <td>{{v.content}}</td>
+                <td><img :src="'http://localhost:1337' + v.image.url" width="200px"></td>
+                <td><button @click.prevent="viewVideo(v.id)" >view</button></td>
               </tr>
             </tbody>
           </table>
@@ -60,7 +64,10 @@ export default {
   methods: {
     ...mapActions({
       fetchVideos: 'video/fetchVideos'
-    })
+    }),
+    viewVideo (ID) {
+      this.$router.push('/video/' + ID)
+    }
   }
 }
 </script>

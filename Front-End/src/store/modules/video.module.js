@@ -1,7 +1,5 @@
 import Vue from 'vue'
-import { sleep } from '@/lib/util'
-
-import { videoJson } from '@/jsonresponse'
+import axios from 'axios'
 
 const state = {
   videos: []
@@ -14,16 +12,21 @@ const getters = {
     if (!categoryID) {
       return getters.getVideos
     } else {
-      return state.videos.filter(video => video.category === categoryID)
+      return getters.getVideos.filter(video => video.category.name === categoryID)
     }
   }
 }
 const actions = {
   fetchVideos (context, payload) {
     // axios get api
-    return sleep(1000).then(() => {
-      context.commit('setVideos', videoJson)
-    })
+    axios.get('/videos')
+      .then(response => {
+        this.categories = response.data
+        context.commit('setVideos', response.data)
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
   }
 }
 const mutations = {

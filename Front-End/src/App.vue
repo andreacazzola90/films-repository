@@ -5,9 +5,6 @@
       cacca
     </template>
     <template v-if=!loading>
-      <template v-for="(c, index) in getCategories" >
-        <router-link :to="'/category/' + c.key" tag="a" class="link" :key="`menu_${index}`">{{c.name}}</router-link>
-      </template>
     </template>
 
     <router-view/>
